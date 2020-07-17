@@ -2,8 +2,9 @@ html{
   font-size:14px;
 }
 
-.navbar{
+.NavBar{
   padding:0;
+
  
 }
 body{
@@ -13,6 +14,7 @@ body{
 }
 #header{
 background-color: #2198dc;
+
 }
 #header a{
   color:white;
@@ -20,9 +22,11 @@ background-color: #2198dc;
   padding-bottom:20px;
   padding-right:20px;
   padding-left:20px;
-  border-right:1px solid #4f91ca;
-  border-left:1px solid #4f91ca;
+  /* border-right:1px solid #4f91ca;
+  border-left:1px solid #4f91ca; */
   font-size:1.4rem;
+  text-decoration: none !important;
+
 }
 #header>.navbar> a:first-child {
   padding:0;
@@ -38,17 +42,18 @@ background-color: #2198dc;
 }
 
 .products-nav{
-  background-color: white;
-  text-align:center;
+  
   padding: 25px 0;
- 
+  
 }
-.products-nav>ul{
+.products-nav>Nav.Link{
   list-style:none;
   margin:0;
+  text-align:center;
 }
-.products-nav>ul>li{
+.products-nav>Nav.Link{
   display:inline;
+ 
 }
 
 .products-nav>ul>li>a{
@@ -96,13 +101,34 @@ background-color: #2198dc;
 }
 .btn-product{
    border: 2px solid; 
-   border-radius: 40px; 
+   border-radius: 30px; 
    background-color:  #2198dc !important;
    color: white !important;
    font-weight: bold !important;
-   padding:25px 30px;
+   padding:20px 30px ;
 }
 .btn-product:hover{
    background-color:   #F6F6F6 !important;
    color: black !important;
+}
+.cardImg:hover{
+  cursor: pointer;
+}
+
+
+.imgBox { 
+  border-radius: calc(1rem - 1px);
+  display: inline-block; 
+  overflow: hidden; 
+}
+.imgBox img {
+  display: block; 
+  transition: .4s ease-in-out;
+}
+.imgBox:hover img {
+  transform: scale(1.1);
+}
+
+.card-img-top{
+  border-radius: calc(1rem - 1px);
 }
