@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "react-bootstrap/Navbar";
 import { useParams, useHistory } from "react-router-dom";
-import {Link} from "react-router-dom";
-import { Nav, Container, Row, Col, Card, Button } from "react-bootstrap";
+import NavBar from "./NavBar"
+import { Link } from "react-router-dom";
+import {
+  Nav,
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Dropdown,
+} from "react-bootstrap";
 import PaginationLink from "./PaginationLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -35,7 +43,7 @@ const ProductsList = () => {
       const data = await fetch(`http://localhost:3001/product?page=${pageNum}`);
       const response = await data.json();
       setProducts(response.data);
-      console.log(response)
+      console.log(response);
       setMaxPageNum(parseInt(response.maxPageNum)); // 1
     }
     fetchData();
@@ -47,102 +55,30 @@ const ProductsList = () => {
   const goPrevPage = () => {
     setPageNum(pageNum - 1);
   };
-  
- 
+
   return (
-    
     <div className="App">
       <header id="header">
-        <Navbar expand="lg">
-          <Navbar.Brand href="#home">
-            Refill Box
-            <img
-              className="no-border d-inline-block align-top"
-              src="https://image.flaticon.com/icons/svg/817/817305.svg"
-              width="40"
-              height="40"
-              alt=""
-            />
-          </Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="#our products">
-              Our Products <FontAwesomeIcon icon="angle-down" />{" "}
-            </Nav.Link>
-            <Nav.Link href="#refillstores">
-                <Link to="/refillstore">
-                Refill Stores <FontAwesomeIcon icon="thumbtack" />
-                </Link>
-             
-            </Nav.Link>
-          </Nav>
-          <div className=" ml-auto d-flex align-items-center">
-            <div id="navbar-menu">
-              <Nav className="navbar-nav">
-                <Nav.Link href="#" className="no-border">
-                <Link to="/about">
-                  About <FontAwesomeIcon icon="angle-down" />{" "}
-                </Link>
-                </Nav.Link>
-                <Nav.Link href="#" className="no-border">
-                  Cart <FontAwesomeIcon icon="cart-plus" />{" "}
-                </Nav.Link>
-
-                <Nav.Link href="#" className="no-border">
-                    <Link to="/login">
-                    Log-in <FontAwesomeIcon icon="user" />{" "}
-                    </Link>
-                 
-                </Nav.Link>
-                <Nav.Link href="#" className="no-border">
-                <Link to ="/newstore">
-                  Create new store <FontAwesomeIcon icon="plus-square" />{" "}
-                </Link>
-                </Nav.Link>
-
-                <Nav.Link href="#" className="no-border">
-                  Search <FontAwesomeIcon icon="search" />
-                </Nav.Link>
-              </Nav>
-            </div>
-          </div>
-        </Navbar>
+       <NavBar/>
       </header>
+      <Container className="banner">
+          <Row>
+              <Col lg={6} className="align-self-end">
+                  <h1>Welcome</h1>
+                  <h2 className="mb-100 title-border-lg">to <i>Refill Box</i></h2>
+                  <p class="mb-80 mr-5">Refill Box is a place for those who are interested in a green, sustainable and environmentally-friendly way of life.
+                   At Refill Box, you will feel happiness, love and gratitude for the products made by Vietnamese people for the benefit of the community and for a simple and healthful lifestyle.</p>
+              </Col>
+              <Col lg={6} className="text-right">
+                <img className="img-fluid" src="https://images.unsplash.com/photo-1559268886-a1bc2d0fbdd0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1397&q=80" alt="banner-image"></img>
+              </Col>
+          </Row>
+      </Container>
 
       <Container>
-        <Row id="pruducts-list">
-          <Col className="col-12">
-            <hr size="2" className="line" />
-            <div className="product-title">
-              <div id="products-nav">
-                <Row className="text-center">
-                  <Col>
-                    <Nav className="products-nav">
-                      <Nav.Link href="#" className="no-border">
-                        Products{" "}
-                      </Nav.Link>
-                      <Nav.Link href="#" className="no-border">
-                        On the go{" "}
-                      </Nav.Link>
-
-                      <Nav.Link href="#" className="no-border">
-                        Home Care{" "}
-                      </Nav.Link>
-
-                      <Nav.Link href="#" className="no-border">
-                        Personal Care
-                      </Nav.Link>
-                      <Nav.Link href="#" className="no-border">
-                        Refill
-                      </Nav.Link>
-                    </Nav>
-                  </Col>
-                </Row>
-              </div>
-            </div>
-          </Col>
-
+        <Row id="pruducts-list" gutter={[16, 16]}>
           {products.map((e) => (
-            <Col sm={6} md={4}>
+            <Col lg="6" md="8" xs="24">
               <Product {...e} />
             </Col>
           ))}
@@ -163,7 +99,7 @@ const ProductsList = () => {
   );
 };
 const Product = ({
- _id,
+  _id,
   title,
   pictureURL,
   price,
@@ -172,22 +108,30 @@ const Product = ({
   description,
   howToUse,
 }) => {
-    const history = useHistory()
+  const history = useHistory();
   return (
     <Row>
       <Col className="main-product" sm={12} md={12}>
-        <Card style={{ width: "18rem" , marginBottom: "10px"}}>
-        <div className="imgBox">
-        <a href={`/product/${_id}`}>
-        <Card.Img className="img-fluid"
-           variant="top"
-            style={{ height: "18rem", objectFit: "cover" }}
-            className="cardImg"
-           src={pictureURL} />
-          {/* <Card.Img class="img-fluid" variant="top" src={pictureURL} /> */}
-        </a>
-        </div>
-         
+        <Card style={{ width: "18rem", marginBottom: "10px" }}>
+          <div className="imgBox">
+            <a href={`/product/${_id}`}>
+              <Card.Img
+                className="img-fluid"
+                variant="top"
+                style={{
+                  height: "18rem",
+                  objectFit: "cover",
+                  width: "100%",
+                  maxHeight: "150px",
+                }}
+                className="cardImg"
+                src={pictureURL}
+              />
+
+              {/* <Card.Img class="img-fluid" variant="top" src={pictureURL} /> */}
+            </a>
+          </div>
+
           <Card.Body>
             <Card.Title>Product: {title}</Card.Title>
             <Card.Text>Price: ${price}</Card.Text>
@@ -199,14 +143,14 @@ const Product = ({
           <div className="product-button text-center d-flex justify-content-around pb-3">
             <Button className="btn btn-product">Add to cart</Button>
 
-           <Button 
-            
-            className="btn btn-product"
-            onClick={()=>{history.push(`product/${_id}`)}}
-            >See more</Button>
-       
-
-           
+            <Button
+              className="btn btn-product"
+              onClick={() => {
+                history.push(`product/${_id}`);
+              }}
+            >
+              See more
+            </Button>
           </div>
         </Card>
       </Col>

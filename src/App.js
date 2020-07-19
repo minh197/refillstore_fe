@@ -5,6 +5,8 @@ import NewStore from "./components/NewStore"
 import Login from "./components/Login"
 import RefillStore from "./components/RefillStore"
 import Detail from "./components/Detail"
+import MyCart from "./components/MyCart"
+
 
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import ProductsList from "./components/ProductsList";
@@ -25,10 +27,13 @@ function App() {
           <NewStore/>
         </Route>
         <Route exact path='/refillstore'>
-          <NewStore/>
+          <RefillStore/>
         </Route>
         <Route exact path='/login'>
           <NewStore/>
+        </Route>
+        <Route exact path='/mycart'>
+          <MyCart/>
         </Route>
         <Route exact path='/product/:productId'>
           <Detail/>
