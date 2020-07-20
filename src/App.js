@@ -1,23 +1,49 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './App.css';
-import About from "./components/About"
-import NewStore from "./components/NewStore"
-import Login from "./components/Login"
-import RefillStore from "./components/RefillStore"
-import Detail from "./components/Detail"
-import MyCart from "./components/MyCart"
-
-
+import {About,NewStore,Login,RefillStore,Detail,MyCart} from "./views"
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import ProductsList from "./components/ProductsList";
+import logo from './img/logo.png'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+    Nav,
+    Navbar,
+  } from "react-bootstrap";
+import {
+  faAngleDown,
+  faThumbtack,
+  faSearch,
+  faCubes,
+  faCartPlus,
+  faUser,
+  faPlusSquare,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(
+  faAngleDown,
+  faThumbtack,
+  faSearch,
+  faCubes,
+  faCartPlus,
+  faUser,
+  faPlusSquare
+);
+
 
 
 
 function App() {
+ 
   return (
+    <div>
+   
+  
+     
+     
+    
     <Router>
       <Switch>
-        <Route exact path='/' >
+        <Route exact path='/home' >
           <ProductsList/>
         </Route>
         <Route exact path='/about'>
@@ -30,7 +56,7 @@ function App() {
           <RefillStore/>
         </Route>
         <Route exact path='/login'>
-          <NewStore/>
+          <Login/>
         </Route>
         <Route exact path='/mycart'>
           <MyCart/>
@@ -41,8 +67,10 @@ function App() {
 
       </Switch>
     </Router>
-   
+  </div>
   );
 }
+
+
 
 export default App;

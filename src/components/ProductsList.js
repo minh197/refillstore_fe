@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import NavBar from "./NavBar"
-import { Link } from "react-router-dom";
+import Footer from "./Footer"
+
 import {
   Nav,
   Container,
@@ -12,26 +13,7 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import PaginationLink from "./PaginationLink";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faAngleDown,
-  faThumbtack,
-  faSearch,
-  faCubes,
-  faCartPlus,
-  faUser,
-  faPlusSquare,
-} from "@fortawesome/free-solid-svg-icons";
-library.add(
-  faAngleDown,
-  faThumbtack,
-  faSearch,
-  faCubes,
-  faCartPlus,
-  faUser,
-  faPlusSquare
-);
+
 const ProductsList = () => {
   const [products, setProducts] = useState([]);
   const [pageNum, setPageNum] = useState(1);
@@ -61,22 +43,27 @@ const ProductsList = () => {
       <header id="header">
        <NavBar/>
       </header>
-      <Container className="banner">
+      <div className="home-banner"> 
+      <Container >
           <Row>
-              <Col lg={6} className="align-self-end">
-                  <h1>Welcome</h1>
-                  <h2 className="mb-100 title-border-lg">to <i>Refill Box</i></h2>
-                  <p class="mb-80 mr-5">Refill Box is a place for those who are interested in a green, sustainable and environmentally-friendly way of life.
-                   At Refill Box, you will feel happiness, love and gratitude for the products made by Vietnamese people for the benefit of the community and for a simple and healthful lifestyle.</p>
+              <Col lg={4} className=" d-flex justify-content-center align-items-center text-center text-lg-left">
+              <div className="banner-description">
+                    <span className="small-heading animated fadeInRight delay-1s">BEST AVAILABLE</span>
+                    <h1 className="w-sm-100 w-md-100 w-lg-25 animated fadeInLeft delay-1s banner-pr ">PRODUCTS <span>COLLECTION</span></h1>
+                    <a href="" className="btn animated fadeInLeft delay-1s shopnow">SHOP NOW </a>
+                </div>
+
               </Col>
-              <Col lg={6} className="text-right">
-                <img className="img-fluid" src="https://images.unsplash.com/photo-1559268886-a1bc2d0fbdd0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1397&q=80" alt="banner-image"></img>
+              <Col lg={8} className="text-right banner-img">
+                
               </Col>
           </Row>
       </Container>
 
+      </div>
+     
       <Container>
-        <Row id="pruducts-list" gutter={[16, 16]}>
+        <Row id="pruducts-list" >
           {products.map((e) => (
             <Col lg="6" md="8" xs="24">
               <Product {...e} />
@@ -94,7 +81,9 @@ const ProductsList = () => {
             Next Page
           </PaginationLink>
         </div>
+       
       </Container>
+      <Footer/>
     </div>
   );
 };
@@ -135,14 +124,19 @@ const Product = ({
           <Card.Body>
             <Card.Title>Product: {title}</Card.Title>
             <Card.Text>Price: ${price}</Card.Text>
-            <Card.Text>Origin: {origin}</Card.Text>
-            <Card.Text>Materials: {materials}</Card.Text>
-            <Card.Text>Description: {description}</Card.Text>
-            <Card.Text>Functions:{howToUse}</Card.Text>
+           
           </Card.Body>
+          <div className="btn-container">
           <div className="product-button text-center d-flex justify-content-around pb-3">
-            <Button className="btn btn-product">Add to cart</Button>
-
+            <Button
+            className="btn btn-product"
+            // disabled={inCart ? true : false}
+             onClick={()=>{
+               console.log("added to the cart");
+               }}>Add to cart
+                
+                 </Button>
+            
             <Button
               className="btn btn-product"
               onClick={() => {
@@ -152,6 +146,8 @@ const Product = ({
               See more
             </Button>
           </div>
+          </div>
+         
         </Card>
       </Col>
     </Row>

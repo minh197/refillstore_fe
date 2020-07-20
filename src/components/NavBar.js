@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import logo from '../img/logo.png'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -31,12 +32,14 @@ library.add(
   faUser,
   faPlusSquare
 );
+
+
 function NavBar() {
     return (
         <div>
-             <Navbar expand="lg">
-            <Link to="/">
-            <Navbar.Brand href="#home">
+             <Navbar expand="lg" className="navbar-fixed-top">
+            <Link to="/home">
+            <Navbar.Brand>
             Refill Box
             <img
               className="no-border d-inline-block align-top"
@@ -59,8 +62,22 @@ function NavBar() {
               </Link>
             </Nav.Link>
           </Nav>
+
+          
+          
           <div className=" ml-auto d-flex align-items-center">
-            <div id="navbar-menu">
+           
+          <div>
+          <Navbar.Collapse data-toggle="collapse" data-target="#navbar-menu">
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+
+
+            </Navbar.Collapse>
+          </div>
+
+            <div id="navbar-menu" className="collapse navbar-collapse">
               <Nav className="navbar-nav">
                 <Nav.Link href="#" className="no-border">
                   <Link to="/about">
