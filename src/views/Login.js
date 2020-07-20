@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FacebookLogin from "react-facebook-login";
 import Modal from "react-bootstrap/Modal";
+import { useParams, useHistory } from "react-router-dom";
 
 import {
   MDBContainer,
@@ -14,6 +15,7 @@ import {
   MDBModalFooter,
 } from "mdbreact";
 function Login() {
+  const history = useHistory();
   const [open, setOpen] = useState(false);
   const loginWithFacebook =  async data => {
     if(data && data.accessToken)
@@ -21,7 +23,12 @@ function Login() {
     const res = await fetch(`http://localhost:3001/auth/login/facebook?token=${data.accessToken}`)
     if(res.ok){
       const dt = await res.json()
+      localStorage.setItem("token", dt.token)
+      localStorage.setItem("user", JSON.stringify(dt.data))
+      //JSON.parse(localStorage.getItem("user"))
+
       console.log(dt)
+      history.push('/home')
     } else{
       console.log(res)
     }

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import logo from '../img/logo.png'
@@ -35,12 +36,17 @@ library.add(
 
 
 function NavBar() {
+    const [name, setName] = useState("")
+    useEffect(() => {
+      const user = JSON.parse(localStorage.getItem('user'))
+      setName(user.name)
+    }, [])
     return (
         <div>
              <Navbar expand="lg" className="navbar-fixed-top">
             <Link to="/home">
             <Navbar.Brand>
-            Refill Box
+            Refill Box {name}
             <img
               className="no-border d-inline-block align-top"
               src={logo}
