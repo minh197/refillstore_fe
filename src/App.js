@@ -1,15 +1,17 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import './App.css';
-import {About,NewStore,Login,RefillStore,Detail,MyCart} from "./views"
+import {About,NewStore,Login,RefillStore,Detail,MyCart,MyProfile,NewComment} from "./views"
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import ProductsList from "./components/ProductsList";
-import logo from './img/logo.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import ProtectedRoute from "./utils/ProtectedRoute"
+
+import 'rheostat/initialize';
+import 'rheostat/css/rheostat.css';
+
+
 import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-    Nav,
-    Navbar,
-  } from "react-bootstrap";
 import {
   faAngleDown,
   faThumbtack,
@@ -32,8 +34,17 @@ library.add(
 
 
 
-function App() {
+
+
  
+
+
+
+
+function App() {
+  
+
+
   return (
     <div>
    
@@ -58,12 +69,17 @@ function App() {
         <Route exact path='/login'>
           <Login/>
         </Route>
-        <Route exact path='/mycart'>
+        
+       
+        <ProtectedRoute  exact path='/mycart'>
           <MyCart/>
-        </Route>
-        <Route exact path='/product/:productId'>
+        </ProtectedRoute>
+        <ProtectedRoute  exact path='/myprofile'>
+          <MyProfile/>
+        </ProtectedRoute>
+        <ProtectedRoute exact path='/product/:productId'>
           <Detail/>
-        </Route>
+        </ProtectedRoute>
 
       </Switch>
     </Router>

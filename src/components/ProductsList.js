@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import NavBar from "./NavBar"
 import Footer from "./Footer"
+import PaginationLink from "./PaginationLink";
+import Rheostat from 'rheostat'
+
+
 
 import {
   Nav,
@@ -12,24 +16,36 @@ import {
   Button,
   Dropdown,
 } from "react-bootstrap";
-import PaginationLink from "./PaginationLink";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+import {
+  
+  faCartPlus,faEye
+  
+} from "@fortawesome/free-solid-svg-icons";
+library.add(
+ 
+  faCartPlus,
+  faEye
+);
 
 const ProductsList = () => {
   const [products, setProducts] = useState([]);
   const [pageNum, setPageNum] = useState(1);
   const [maxPageNum, setMaxPageNum] = useState(1000);
-  const { eid } = useParams();
-
+  const [minPrice, setMinPrice] = useState(1)
+  const [maxPrice, setMaxPrice] = useState(1000)
   useEffect(() => {
     async function fetchData() {
-      const data = await fetch(`http://localhost:3001/product?page=${pageNum}`);
+      const data = await fetch(`http://localhost:3001/product?page=${pageNum}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
       const response = await data.json();
       setProducts(response.data);
       console.log(response);
       setMaxPageNum(parseInt(response.maxPageNum)); // 1
     }
     fetchData();
-  }, [pageNum]);
+  }, [pageNum,minPrice,maxPrice]);
 
   const goNextPage = () => {
     setPageNum(pageNum + 1);
@@ -37,6 +53,31 @@ const ProductsList = () => {
   const goPrevPage = () => {
     setPageNum(pageNum - 1);
   };
+
+  const handleChange =(e)=>{
+    setMinPrice(e.values[0]);
+    setMaxPrice(e.values[1]);
+
+    }
+  const [name, setName] = useState("")
+  const history = useHistory();
+
+  const logout = async () =>{
+    localStorage.setItem("token", "")
+    localStorage.setItem("user", "")
+    setName("")
+    history.push("/home")
+    
+
+  }
+  useEffect(() => {
+    let user = localStorage.getItem('user')
+    if (user) {
+      user = JSON.parse(user)
+      setName(user.name)
+    }
+   
+  }, [name])
 
   return (
     <div className="App">
@@ -48,8 +89,10 @@ const ProductsList = () => {
           <Row>
               <Col lg={4} className=" d-flex justify-content-center align-items-center text-center text-lg-left">
               <div className="banner-description">
+                    <h1 className="w-sm-100 w-md-100 w-lg-25 animated fadeInLeft delay-1s banner-pr name ">Welcome <span>{name}</span></h1>
                     <span className="small-heading animated fadeInRight delay-1s">BEST AVAILABLE</span>
-                    <h1 className="w-sm-100 w-md-100 w-lg-25 animated fadeInLeft delay-1s banner-pr ">PRODUCTS <span>COLLECTION</span></h1>
+                    <h2 className="w-sm-100 w-md-100 w-lg-25 animated fadeInLeft delay-1s banner-pr ">PRODUCTS <span>COLLECTION</span></h2>
+                   
                     <a href="" className="btn animated fadeInLeft delay-1s shopnow">SHOP NOW </a>
                 </div>
 
@@ -60,9 +103,21 @@ const ProductsList = () => {
           </Row>
       </Container>
 
+      
+
       </div>
      
       <Container>
+      <div className="pt-4" >
+            <Rheostat
+            min={1}
+            max={1000}
+            values={[minPrice, maxPrice]}
+            onChange={handleChange}
+            
+            
+        />
+        </div> 
         <Row id="pruducts-list" >
           {products.map((e) => (
             <Col lg="6" md="8" xs="24">
@@ -86,11 +141,11 @@ const ProductsList = () => {
       <Footer/>
     </div>
   );
-};
+}
 const Product = ({
   _id,
   title,
-  pictureURL,
+  pictureUrl,
   price,
   origin,
   materials,
@@ -114,7 +169,7 @@ const Product = ({
                   maxHeight: "150px",
                 }}
                 className="cardImg"
-                src={pictureURL}
+                src={pictureUrl}
               />
 
               {/* <Card.Img class="img-fluid" variant="top" src={pictureURL} /> */}
@@ -126,24 +181,27 @@ const Product = ({
             <Card.Text>Price: ${price}</Card.Text>
            
           </Card.Body>
-          <div className="btn-container">
-          <div className="product-button text-center d-flex justify-content-around pb-3">
+          <div  className="btn-container">
+          <div  style={{backgroundColor:
+              "black"}} className="product-button text-center d-flex justify-content-around pb-3 pt-2">
             <Button
-            className="btn btn-product"
+           
+            className=" btn-product"
             // disabled={inCart ? true : false}
              onClick={()=>{
                console.log("added to the cart");
-               }}>Add to cart
+               }}>
+                 <FontAwesomeIcon icon="cart-plus" />{" "}
                 
                  </Button>
             
             <Button
-              className="btn btn-product"
+              className=" btn-product"
               onClick={() => {
                 history.push(`product/${_id}`);
               }}
             >
-              See more
+              <FontAwesomeIcon icon="eye" />{" "}
             </Button>
           </div>
           </div>

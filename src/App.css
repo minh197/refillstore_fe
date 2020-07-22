@@ -27,7 +27,7 @@ body{
  padding:0;
  line-height: 1.5;
  font-family: 'EB Garamond', serif !important;
-  font-size: 15px;
+  
   color: var(--mainDark) !important;
   
   
@@ -57,10 +57,7 @@ background-color: white;
 .no-border{
   border:0 !important;
 }
-#products{
-  background-color: rgba(0,67,108,.8);
- 
-}
+
 
 .products-nav{
   
@@ -77,16 +74,6 @@ background-color: white;
  
 }
 
-.products-nav>ul>li>a{
- font-weight:bold;
- color:#06456a;
- border-right:0.2rem solid #4f91ca;
- font-size:1.4rem;
-}
-.products-nav>ul>li>a:hover{
-  color: #2198dc;
-  text-decoration:none
-}
 #pruducts-list{
   /* background-color:#F6F6F6; */
   padding: 50px;
@@ -112,7 +99,7 @@ background-color: white;
   display:none;
 }
 .main-product>h2{
- font-size: 1.5rem;
+ 
  padding: 20px 0;
 }
 .main-product>.product-detail>p{
@@ -122,24 +109,25 @@ background-color: white;
   font-size: 0.5rem !important;
 }
 .btn-product{
-   border: 2px solid; 
-   border-radius: 30px; 
-   background-color:  #2198dc !important;
+   border: 1px solid; 
+   border-radius: 20% !important;
+   background-color: black !important;
    color: white !important;
    font-weight: bold !important;
-   padding:20px 30px ;
+   padding:0 30px ;
+   transition: 300ms!important;
+   
+  
 }
 .btn-product:hover{
    background-color:   #F6F6F6 !important;
    color: black !important;
+   filter :brightness(1.2)
 }
 .cardImg:hover{
   cursor: pointer;
 }
-.btn-container{
-  position:relative;
-  overflow: hidden;
-}
+
 
 .imgBox { 
   border-radius: calc(1rem - 1px);
@@ -158,6 +146,20 @@ background-color: white;
 .card-img-top{
   border-radius: calc(1rem - 1px);
 }
+.home-style{
+  color:black !important;
+}
+
+.infoTable>.table-content>.content{
+  font-size:20px!important;
+  font-family: 'IBM Plex Serif', serif;
+}
+.infoTable>.table-content>.icon{
+  font-size:1.2rem!important
+}
+.headingStyle{
+  font-family: 'IBM Plex Serif', serif;
+}
 
 
 /*BANNER HOME START*/
@@ -175,6 +177,7 @@ background-color: white;
   background-repeat: no-repeat;
   
 }
+
 
 
 
@@ -346,4 +349,19 @@ background-color: white;
 .footer_notes p{
     padding-top: 50px;
     color: #888888;
+}
+/* .Modal {
+  
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  background-color: papayawhip;
+} */
+.s-icons>.social-icons-simple{
+  list-style: none! important;
+}
+.banner-description>.name{
+  font-weight: bold;
+  font-family: 'Caveat', cursive;
 }

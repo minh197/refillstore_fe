@@ -12,6 +12,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.4.2",
+    "aphrodite": "^2.4.0",
     "bootstrap": "^4.5.0",
     "mdbreact": "^4.27.0",
     "react": "^16.13.1",
@@ -21,8 +22,11 @@
     "react-fontawesome": "^1.7.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-with-styles": "^4.1.0",
     "reactstrap": "^8.5.1",
-    "styled-components": "^5.1.1"
+    "rheostat": "^4.1.1",
+    "styled-components": "^5.1.1",
+    "theme-css": "0.0.6"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -21,27 +21,38 @@ function Login() {
     if(data && data.accessToken)
     console.log(data.accessToken)
     const res = await fetch(`http://localhost:3001/auth/login/facebook?token=${data.accessToken}`)
+    const dt = await res.json()
+    console.log(dt)
     if(res.ok){
-      const dt = await res.json()
+      //const dt = await res.json()
       localStorage.setItem("token", dt.token)
       localStorage.setItem("user", JSON.stringify(dt.data))
       //JSON.parse(localStorage.getItem("user"))
 
-      console.log(dt)
+      
       history.push('/home')
     } else{
       console.log(res)
     }
   }
+  
+
+  
   return (
     <div>
-      <Modal show={open} onHide={() => setOpen(!open)}>
+      <Modal
+      
+      show={open} onHide={() => setOpen(!open)}
+      >
         <FacebookLogin
           appId="256215649014545"
           autoLoad={false}
           fields="name,email,picture"
           callback={loginWithFacebook}
+          className="Modal"
         />
+
+      
       </Modal>
       <MDBContainer>
         <MDBRow>

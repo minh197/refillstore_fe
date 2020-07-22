@@ -12,11 +12,12 @@ function Footer() {
     return (
         <div>
             <div className="footer">
-    <Container>
-        <div className="row footer-container">
+    <Container >
+        <div className="row footer-container m-3">
             <Col sm={12} lg={4} className=" f-sec1  text-center text-lg-left">
                 <h4 className="high-lighted-heading">About Us</h4>
-                <p>We take our mission of increasing our global access to quality education seriously. </p>
+                <p>Refill Store is a place for those who are interested in a green, sustainable and environmentally-friendly way of life.
+                     At Refill Store, you will feel happiness, love and gratitude for the products made by Vietnamese people for the benefit of the community and for a simple and healthful lifestyle. </p>
                 <a href="#">Read more</a>
                 <h4>Social Network</h4>
                 <div className="s-icons">
