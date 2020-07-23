@@ -160,7 +160,13 @@ background-color: white;
 .headingStyle{
   font-family: 'IBM Plex Serif', serif;
 }
-
+btn-primary {
+  color: #fff;
+  /* background-color: #4285f4 !important; */
+}
+.loginForm{
+  padding-left:50px !important
+}
 
 /*BANNER HOME START*/
 .banner-img{

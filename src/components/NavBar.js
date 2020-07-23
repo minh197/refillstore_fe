@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 import Navbar from "react-bootstrap/Navbar";
-import Dropdown from "./Dropdown"
+import Dropdown from "./Dropdown";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { Nav } from "react-bootstrap";
+import { Nav, Button } from "react-bootstrap";
 import {
   faAngleDown,
   faThumbtack,
@@ -55,23 +55,24 @@ function NavBar() {
         </Link>
 
         <Nav className="mr-auto">
-          <Nav.Link href="#our products">
-            Our Products <FontAwesomeIcon icon="angle-down" />{" "}
-          </Nav.Link>
-          <Nav.Link href="#refillstores">
+          <Nav.Link href="#refillstores" className="pl-1">
             <Link to="/refillstore">
               Refill Stores <FontAwesomeIcon icon="thumbtack" />
             </Link>
           </Nav.Link>
+          <Nav.Link href="#" className="no-border">
+            <Link to="/newstore">
+              Create new store <FontAwesomeIcon icon="plus-square" />{" "}
+            </Link>
+          </Nav.Link>
         </Nav>
 
-        <div className=" ml-auto d-flex align-items-center">
+        <div className=" mr-4 d-flex align-items-center">
           <div>
-           
-          </div>
-
-          <div id="navbar-menu" className="collapse navbar-collapse">
-           
+            <Navbar
+              id="navbar-menu"
+              className="collapse collapse navbar-collapse navbar-nav"
+            >
               <Nav.Link href="#" className="no-border">
                 <Link to="/mycart">
                   Cart <FontAwesomeIcon icon="cart-plus" />{" "}
@@ -79,20 +80,27 @@ function NavBar() {
               </Nav.Link>
 
               <Nav.Link href="#" className="dropdown-btn">
-              <Dropdown/>
-              </Nav.Link>
-
-              <Nav.Link href="#" className="no-border">
-                <Link to="/newstore">
-                  Create new store <FontAwesomeIcon icon="plus-square" />{" "}
-                </Link>
+                <Dropdown />
               </Nav.Link>
 
               <Nav.Link href="#" className="no-border">
                 Search <FontAwesomeIcon icon="search" />
               </Nav.Link>
-           
+            </Navbar>
           </div>
+          <Button
+            className="navbar-toggler"
+            variant="primary"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbar-menu"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            style={{ backgroundColor: "white" }}
+          >
+            <span className="navbar-toggler-icon" />
+          </Button>
         </div>
       </Navbar>
     </div>

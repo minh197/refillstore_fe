@@ -37,8 +37,7 @@ function Dropdown() {
   `;
 
   const DropDownContainer = styled("div")`
-    width: 8em;
-    margin: 0 auto;
+    
   `;
 
   const DropDownHeader = styled("div")`

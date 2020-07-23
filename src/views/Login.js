@@ -54,7 +54,7 @@ function Login() {
 
       
       </Modal>
-      <MDBContainer>
+      <MDBContainer className="loginForm">
         <MDBRow>
           <MDBCol md="6">
             <MDBCard>
