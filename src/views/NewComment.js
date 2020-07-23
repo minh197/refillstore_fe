@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { Form, Navbar, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import {BACKEND_URL} from "../app.constant"
 function NewComment({productId, userName, comments, setComments}) {
     //const [userName, setUserName] = useState("");

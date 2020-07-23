@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import NavBar from "./NavBar"
 import Footer from "./Footer"
 import PaginationLink from "./PaginationLink";
@@ -8,13 +8,13 @@ import Rheostat from 'rheostat'
 
 
 import {
-  Nav,
+ 
   Container,
   Row,
   Col,
   Card,
   Button,
-  Dropdown,
+  
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -62,14 +62,14 @@ const ProductsList = () => {
   const [name, setName] = useState("")
   const history = useHistory();
 
-  const logout = async () =>{
-    localStorage.setItem("token", "")
-    localStorage.setItem("user", "")
-    setName("")
-    history.push("/home")
+  // const logout = async () =>{
+  //   localStorage.setItem("token", "")
+  //   localStorage.setItem("user", "")
+  //   setName("")
+  //   history.push("/home")
     
 
-  }
+  // }
   useEffect(() => {
     let user = localStorage.getItem('user')
     if (user) {
@@ -93,7 +93,7 @@ const ProductsList = () => {
                     <span className="small-heading animated fadeInRight delay-1s">BEST AVAILABLE</span>
                     <h2 className="w-sm-100 w-md-100 w-lg-25 animated fadeInLeft delay-1s banner-pr ">PRODUCTS <span>COLLECTION</span></h2>
                    
-                    <a href="" className="btn animated fadeInLeft delay-1s shopnow">SHOP NOW </a>
+                    <a  className="btn animated fadeInLeft delay-1s shopnow">SHOP NOW </a>
                 </div>
 
               </Col>

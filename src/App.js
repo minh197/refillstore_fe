@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import {About,NewStore,Login,RefillStore,Detail,MyCart,MyProfile,NewComment} from "./views"
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";

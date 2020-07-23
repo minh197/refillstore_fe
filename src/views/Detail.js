@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
-import { useParams, Link } from "react-router-dom";
-import { Navbar, Container, Row, Col, Badge, Button } from "react-bootstrap";
+import { useParams} from "react-router-dom";
+import { Navbar, Container, Row, Col, Badge } from "react-bootstrap";
 import  Comment from "../components/Comment"
 import { useHistory } from "react-router-dom";
 import NewComment from './NewComment';

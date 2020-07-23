@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 
 import Navbar from "react-bootstrap/Navbar";
 import Dropdown from "./Dropdown";
@@ -27,7 +27,6 @@ library.add(
 );
 
 function NavBar() {
-  const [open, setOpen] = useState(false);
 
   const history = useHistory();
 
