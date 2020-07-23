@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FacebookLogin from "react-facebook-login";
 import Modal from "react-bootstrap/Modal";
 import { useParams, useHistory } from "react-router-dom";
-
+import {BACKEND_URL} from "../app.constant"
 import {
   MDBContainer,
   MDBRow,
@@ -20,7 +20,7 @@ function Login() {
   const loginWithFacebook =  async data => {
     if(data && data.accessToken)
     console.log(data.accessToken)
-    const res = await fetch(`http://localhost:3001/auth/login/facebook?token=${data.accessToken}`)
+    const res = await fetch(`${BACKEND_URL}/auth/login/facebook?token=${data.accessToken}`)
     const dt = await res.json()
     console.log(dt)
     if(res.ok){

@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { Form, Navbar, Button } from "react-bootstrap";
-
+import {BACKEND_URL} from "../app.constant"
 function NewComment({productId, userName, comments, setComments}) {
     //const [userName, setUserName] = useState("");
     const [comment, setComment] = useState("");
@@ -12,7 +12,7 @@ function NewComment({productId, userName, comments, setComments}) {
           comment,
           product: productId
         };
-        const newComment = await fetch("http://localhost:3001/product/comment", {
+        const newComment = await fetch(`${BACKEND_URL}/product/comment`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -18,7 +18,7 @@ import {
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-
+import {BACKEND_URL} from "../app.constant"
 import {
   
   faCartPlus,faEye
@@ -38,7 +38,7 @@ const ProductsList = () => {
   const [maxPrice, setMaxPrice] = useState(1000)
   useEffect(() => {
     async function fetchData() {
-      const data = await fetch(`http://localhost:3001/product?page=${pageNum}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
+      const data = await fetch(`${BACKEND_URL}/product?page=${pageNum}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
       const response = await data.json();
       setProducts(response.data);
       console.log(response);

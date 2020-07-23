@@ -4,7 +4,7 @@ import { Navbar, Container, Row, Col, Badge, Button } from "react-bootstrap";
 import  Comment from "../components/Comment"
 import { useHistory } from "react-router-dom";
 import NewComment from './NewComment';
-
+import {BACKEND_URL} from "../app.constant"
 
 const Detail = () => {
     const [productInfo, setProInfo] = useState(null);
@@ -15,7 +15,7 @@ const Detail = () => {
     useEffect(() => {
        
       async function fetchData() {
-        const data = await fetch("http://localhost:3001/product/" + eid);
+        const data = await fetch(`${BACKEND_URL}/product/` + eid);
         
         const productInfo = await data.json();
         console.log("What is eid", eid)

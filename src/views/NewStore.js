@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Navbar, Button } from "react-bootstrap";
+import {BACKEND_URL} from "../app.constant"
 
 function NewStore() {
   
@@ -30,7 +31,7 @@ function NewStore() {
           };
           console.log(" pro data:", productData)
           // to send this, send a POST request to API
-          const newExperience = await fetch("http://localhost:3001/product", {
+          const newExperience = await fetch(`${BACKEND_URL}/product`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
