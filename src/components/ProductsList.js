@@ -59,7 +59,7 @@ const ProductsList = () => {
 
     }
   const [name, setName] = useState("")
-  const history = useHistory();
+  // const history = useHistory();
 
   // const logout = async () =>{
   //   localStorage.setItem("token", "")
@@ -92,7 +92,7 @@ const ProductsList = () => {
                     <span className="small-heading animated fadeInRight delay-1s">BEST AVAILABLE</span>
                     <h2 className="w-sm-100 w-md-100 w-lg-25 animated fadeInLeft delay-1s banner-pr ">PRODUCTS <span>COLLECTION</span></h2>
                    
-                    <a  className="btn animated fadeInLeft delay-1s shopnow">SHOP NOW </a>
+                    <span  className="btn animated fadeInLeft delay-1s shopnow">SHOP NOW </span>
                 </div>
 
               </Col>
@@ -159,7 +159,7 @@ const Product = ({
           <div className="imgBox">
             <a href={`/product/${_id}`}>
               <Card.Img
-                className="img-fluid"
+                className="img-fluid cardImg"
                 variant="top"
                 style={{
                   height: "18rem",
@@ -167,7 +167,7 @@ const Product = ({
                   width: "100%",
                   maxHeight: "150px",
                 }}
-                className="cardImg"
+               
                 src={pictureUrl}
               />
 

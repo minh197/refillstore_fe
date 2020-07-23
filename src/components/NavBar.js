@@ -3,7 +3,7 @@ import React, {  useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Dropdown from "./Dropdown";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Nav, Button } from "react-bootstrap";
@@ -28,14 +28,14 @@ library.add(
 
 function NavBar() {
 
-  const history = useHistory();
+  // const history = useHistory();
 
-  const logout = async () => {
-    localStorage.setItem("token", "");
-    localStorage.setItem("user", "");
+  // const logout = async () => {
+  //   localStorage.setItem("token", "");
+  //   localStorage.setItem("user", "");
 
-    history.push("/home");
-  };
+  //   history.push("/home");
+  // };
   useEffect(() => {}, []);
   return (
     <div>

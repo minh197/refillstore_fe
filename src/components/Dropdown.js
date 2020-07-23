@@ -25,11 +25,11 @@ function Dropdown() {
   };
   
 
-  const Main = styled("div")`
-    font-family: sans-serif;
+  // const Main = styled("div")`
+  //   font-family: sans-serif;
 
-    height: 100vh;
-  `;
+  //   height: 100vh;
+  // `;
 
   const DropDownContainer = styled("div")`
     

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FacebookLogin from "react-facebook-login";
 import Modal from "react-bootstrap/Modal";
-import { useParams, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 import {BACKEND_URL} from "../app.constant"
 import {
   MDBContainer,

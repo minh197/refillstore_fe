@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react'
 import { useParams} from "react-router-dom";
 import { Navbar, Container, Row, Col, Badge } from "react-bootstrap";
 import  Comment from "../components/Comment"
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import NewComment from './NewComment';
 import {BACKEND_URL} from "../app.constant"
 
@@ -28,8 +28,8 @@ const Detail = () => {
 
       const user = JSON.parse(localStorage.getItem('user'));
       setUserName(user.name);
-    }, []);
-    const history = useHistory();
+    }, [eid]);
+    // const history = useHistory();
 
 
 return (
@@ -106,6 +106,7 @@ const Product = ({
             <Row xl="2" lg="2" md="1" sm="1" xs="1" className="pt-4">
               <Col xl={4}>
                 <img
+                alt=""
                   src={pictureUrl}
                   style={{
                     height: "18rem",

@@ -31,7 +31,7 @@ function NewStore() {
           };
           console.log(" pro data:", productData)
           // to send this, send a POST request to API
-          const newExperience = await fetch(`${BACKEND_URL}/product`, {
+          const newProduct = await fetch(`${BACKEND_URL}/product`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -39,7 +39,7 @@ function NewStore() {
             body: JSON.stringify(productData),
       
           });
-          alert("Your Event Has Been Added")
+          alert("Your Product Has Been Added")
           setTitle("");
           setOrigin("");
           setPrice(0);
@@ -52,6 +52,8 @@ function NewStore() {
           setHowToUse("");
           setOwner("");
           
+
+          newProduct();
         };
       
     return (

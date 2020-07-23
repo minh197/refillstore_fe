@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
-import {About,NewStore,Login,RefillStore,Detail,MyCart,MyProfile,NewComment} from "./views"
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {About,NewStore,Login,RefillStore,Detail,MyCart,MyProfile} from "./views"
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import ProductsList from "./components/ProductsList";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ProtectedRoute from "./utils/ProtectedRoute"
 
