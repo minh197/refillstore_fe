@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import NavBar from "./NavBar"
-import Footer from "./Footer"
 import PaginationLink from "./PaginationLink";
 import Rheostat from 'rheostat'
 
@@ -138,7 +137,7 @@ const ProductsList = () => {
         </div>
        
       </Container>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }
